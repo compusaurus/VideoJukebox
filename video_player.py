@@ -281,7 +281,7 @@ class VideoPlayer:
                     self.on_media_list_player_event(event_type="MediaError")
             else:
                 logger.info("play_playlist: ml_player.play() invoked.")
-            return True        else:
+            return True
 
     def stop(self):
         if self.ml_player:
