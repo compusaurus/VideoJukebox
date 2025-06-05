@@ -479,16 +479,16 @@ class VideoJukeboxApp:
             else:
                 self.logger.warning("SingleMediaEnded received, but MRL not provided.")
 
-            # We DO NOT call play_playlist() here,
-            # because video_player._handle_single_media_ended(…) already removed index 0
-            # and immediately started the next item in VLC’s list (if there was one).
-            #
-            # Instead, just update the UI “Now Playing” text and handle idle if needed:
+            # Normally the VideoPlayer starts the next item itself, but if it
+            # failed for any reason we make sure playback continues.
             if self.video_player.get_playlist_count() == 0:
                 self.logger.info("SingleMediaEnded: VLC MediaList is now empty; entering idle.")
                 if self.main_ui:
                     self.main_ui.set_currently_playing(None)
                     self.main_ui.reset_idle_timer()
+            else:
+                self.logger.info("SingleMediaEnded: Playlist has more items. Ensuring playback continues.")
+                self.video_player.play_playlist()
 
             self.update_all_ui_elements()
 
