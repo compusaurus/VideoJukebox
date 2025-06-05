@@ -1,0 +1,16 @@
+{
+    "music_video_directory": "C:\\Users\\mpw\\OneDrive\\MusicVideos",
+    "log_directory": "C:\\Users\\mpw\\Python\\video_jukebox_project\\video_jukebox_app\\logs",
+    "splash_directory": "C:\\Users\\mpw\\Python\\video_jukebox_project\\video_jukebox_app\\assets",
+    "splash_image_file": "default_splash.jpg",
+    "buttons_position": "bottom",
+    "show_splash_on_startup": true,
+    "splash_duration_ms": 3000,
+    "show_confirmation_prompts": true,
+    "default_credit_cost": 3,
+    "admin_password_hash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "blocked_artists": [],
+    "blocked_genres": [],
+    "blocked_tracks": [],
+    "last_screen_positions": {}
+}

@@ -1,0 +1,19 @@
+import requests
+import urllib.parse
+
+def enqueue_to_running_vlc(video_path, vlc_host="http://localhost:8080", vlc_password="vlcpass"):
+    """
+    Enqueue a new video file into a VLC instance that was launched
+    with the HTTP interface enabled (––extraintf http).
+    """
+    # VLC expects an URL-encoded path; if it's a local file, prefix with file://
+    encoded = urllib.parse.quote(f"file://{video_path}")
+    cmd_url = f"{vlc_host}/requests/status.xml?command=enqueue&input={encoded}"
+    r = requests.get(cmd_url, auth=("", vlc_password))
+    if r.status_code == 200:
+        print(f"Successfully enqueued {video_path}")
+    else:
+        print("Failed to enqueue:", r.status_code, r.text)
+
+if __name__ == "__main__":
+    enqueue_to_running_vlc("/absolute/path/to/video.mp4")
